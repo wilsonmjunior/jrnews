@@ -1,16 +1,15 @@
 import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 import { api } from '../../services/api'
 import { getStripeJs } from '../../services/stripe-js'
 
 import styles from './styles.module.scss'
 
-interface SubscribeButtonProps {
-  priceId: string
-}
+export function SubscribeButton() {
+  const { data: session, status } = useSession()
 
-export function SubscribeButton({ priceId }: SubscribeButtonProps) {
-  const { data: session } = useSession()
+  const { push } = useRouter()
 
   async function handleSubscribe() {
     if (!session) {
@@ -18,12 +17,16 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
       return
     }
 
+    if (status === 'authenticated' && session.user) {
+      return push('/posts')
+    }
+
     try {
       // create checkout session
       const response = await api.post('/checkout/subscribe')
       const { sessionId } = response.data
       const stripe = await getStripeJs()
-      stripe.redirectToCheckout({ sessionId })
+      await stripe.redirectToCheckout({ sessionId })
     } catch (error) {
       alert(error.message)
     }

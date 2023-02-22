@@ -32,7 +32,7 @@ export default function Home({ product: { amount, priceId } }: HomeProps) {
             <span>for {amount} month</span>
           </p>
 
-          <SubscribeButton priceId={priceId} />
+          <SubscribeButton />
         </section>
 
         <img src="/images/avatar.svg" alt="Girl Codding" />
