@@ -5,10 +5,12 @@ import { useRouter } from "next/router"
 import { SubscribeButton } from "."
 
 jest.mock('next-auth/react')
-jest.mock('next/router')
-// jest.mock('next/router', () => ({
-//   useRouter: jest.fn(),
-// }))
+
+jest.mock('next/router', () => ({
+  useRouter: jest.fn().mockReturnValue({
+    push: jest.fn(),
+  }),
+}))
 
 describe('SubscriptionButton Component', () => {
   it('should renders correctly', () => {
@@ -25,6 +27,7 @@ describe('SubscriptionButton Component', () => {
 
   it('should redirects user to sign in when not authenticated', () => {
     const signInMocked = jest.mocked(signIn)
+
     render(<SubscribeButton />)
 
     const subscribeButton = screen.getByText('Subscribe now')
