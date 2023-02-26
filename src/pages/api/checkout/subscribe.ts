@@ -1,8 +1,9 @@
-import { query as q } from "faunadb";
-import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/react";
-import { fauna } from "../../../services/fauna";
-import { stripe } from "../../../services/stripe";
+import { query as q } from "faunadb"
+import { NextApiRequest, NextApiResponse } from "next"
+import { getSession } from "next-auth/react"
+
+import { fauna } from "../../../services/fauna"
+import { stripe } from "../../../services/stripe"
 
 type User = {
   ref: {
@@ -15,7 +16,7 @@ type User = {
 
 export default async (req: NextApiRequest, res: NextApiResponse) =>{
   if (req.method === 'POST') {
-    const session = await getSession({ req})
+    const session = await getSession({ req })
 
     const user = await fauna.query<User>(
       q.Get(
@@ -57,11 +58,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) =>{
       allow_promotion_codes: true,
       success_url: process.env.STRIPE_SUCCESS_URL,
       cancel_url: process.env.STRIPE_CANCEL_URL,
-    });
+    })
 
-    return res.status(200).json({ sessionId: stripeCheckoutSession.id });
+    return res.status(200).json({ sessionId: stripeCheckoutSession.id })
   } else {
-    res.setHeader('Allow', 'POST');
-    res.status(405).end('Method Not Allowed');
+    res.setHeader('Allow', 'POST')
+    res.status(405).end('Method Not Allowed')
   }
 }

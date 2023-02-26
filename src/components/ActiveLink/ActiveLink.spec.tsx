@@ -1,6 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react'
 
-import { ActiveLink } from '.';
+import { ActiveLink } from '.'
 
 jest.mock('next/router', () => {
   return {
@@ -16,20 +16,20 @@ describe('ActiveLink Component', () => {
       <ActiveLink href="/" activeClassName='active'>
         <p>Home</p>
       </ActiveLink>
-    );
+    )
 
-    const home = screen.getByText('Home');
-    expect(home).toBeInTheDocument();
-  });
+    const home = screen.getByText('Home')
+    expect(home).toBeInTheDocument()
+  })
 
   it('should adds active if the link as currently active', () => {
     render(
       <ActiveLink href="/" activeClassName='active'>
         <p>Home</p>
       </ActiveLink>
-    );
+    )
 
-    const home = screen.getByText('Home');
-    expect(home).toHaveClass('active');
-  });
-});
+    const home = screen.getByText('Home')
+    expect(home).toHaveClass('active')
+  })
+})

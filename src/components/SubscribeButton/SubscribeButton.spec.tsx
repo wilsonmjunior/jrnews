@@ -34,7 +34,7 @@ describe('SubscriptionButton Component', () => {
 
     fireEvent.click(subscribeButton)
 
-    expect(signInMocked).toHaveBeenCalled();
+    expect(signInMocked).toHaveBeenCalled()
   })
 
   it('should redirects to posts when user already has a subscription', () => {
@@ -56,7 +56,7 @@ describe('SubscriptionButton Component', () => {
         expires: 'fake-expires',
       },
       status: 'authenticated',
-    });
+    })
 
     render(<SubscribeButton />)
 
@@ -64,6 +64,6 @@ describe('SubscriptionButton Component', () => {
 
     fireEvent.click(subscribeButton)
 
-    expect(pushMocked).toHaveBeenCalledWith('/posts');
+    expect(pushMocked).toHaveBeenCalledWith('/posts')
   })
 })

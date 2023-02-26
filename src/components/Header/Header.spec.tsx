@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react"
 
-import { Header } from "./";
+import { Header } from "./"
 
 jest.mock('next/router', () => {
   return {
@@ -8,7 +8,7 @@ jest.mock('next/router', () => {
       return { asPath: '/' }
     }
   }
-});
+})
 
 jest.mock('next-auth/react', () => {
   return {
@@ -16,15 +16,15 @@ jest.mock('next-auth/react', () => {
       return [null, false]
     }
   }
-});
+})
 
 describe('Header Component', () => {
   it('should renders correctly', () => {
     render(
       <Header />
-    );
+    )
 
-    expect(screen.getByText('Home')).toBeInTheDocument();
-    expect(screen.getByText('Posts')).toBeInTheDocument();
-  });
+    expect(screen.getByText('Home')).toBeInTheDocument()
+    expect(screen.getByText('Posts')).toBeInTheDocument()
+  })
  })
