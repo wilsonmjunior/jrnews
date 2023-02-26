@@ -7,18 +7,14 @@ import { getStripeJs } from '../../services/stripe-js'
 import styles from './styles.module.scss'
 
 export function SubscribeButton() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
 
   const { push } = useRouter()
 
   async function handleSubscribe() {
     if (!session) {
-      signIn('github')
+      await signIn('github')
       return
-    }
-
-    if (status === 'authenticated' && session.user) {
-      return push('/posts')
     }
 
     try {
