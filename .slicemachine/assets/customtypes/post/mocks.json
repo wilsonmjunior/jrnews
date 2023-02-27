@@ -1,0 +1,26 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "atom"
+  },
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "negative",
+    "type": "Text"
+  },
+  "content": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Esse adipisicing magna consequat veniam aliquip pariatur esse Lorem elit eiusmod occaecat dolore elit consectetur. Consectetur aliqua mollit reprehenderit velit excepteur do culpa excepteur ut occaecat elit laboris. Et officia non aute fugiat in velit sunt excepteur aliqua dolore sit esse sunt aute irure."
+        }
+      }
+    ]
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": []
+  }
+}
