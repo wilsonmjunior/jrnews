@@ -1,22 +1,11 @@
+import { signIn, signOut, useSession } from 'next-auth/react'
 import { FaGithub } from 'react-icons/fa'
 import { FiX } from 'react-icons/fi'
-import { signIn, signOut, useSession } from 'next-auth/react'
 
 import styles from './styles.module.scss'
-import { useCallback } from 'react'
 
 export function SignInButton() {
   const { data: session } = useSession()
-
-  const handleSignIn =  useCallback(async() => {
-    try {
-      await signIn('github',  {
-        redirect: true,
-      })
-    } catch (error) {
-      console.log('Error: ', error)
-    }
-  }, [])
 
   return session ? (
     <button
@@ -32,7 +21,7 @@ export function SignInButton() {
     <button
       type="button"
       className={styles.signInButton}
-      onClick={handleSignIn}
+      onClick={() => signIn('github')}
     >
       <FaGithub color="#EBA417" />
       Sign In with GitHub
