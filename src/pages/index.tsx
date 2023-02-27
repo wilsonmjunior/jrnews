@@ -17,7 +17,7 @@ export default function Home({ product: { amount, priceId } }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Home | ig.news</title>
+        <title>Home | Jr.news</title>
       </Head>
 
       <main className={styles.container}>
