@@ -1,21 +1,25 @@
 import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 import { api } from '../../services/api'
 import { getStripeJs } from '../../services/stripe-js'
+import { Session } from '../../types/next-auth.types'
 
 import styles from './styles.module.scss'
 
 export function SubscribeButton() {
-  const { data: session } = useSession()
+  const { data: session } = useSession() as { data: Session }
+  const router = useRouter();
 
   async function handleSubscribe() {
     if (!session) {
       await signIn('github')
     }
 
-    // if (status === 'authenticated') {
-    //   return push('/posts')
-    // }
+    if (session.activeSubscription) {
+      router.push('/posts');
+      return;
+    }
 
     try {
       // create checkout session
