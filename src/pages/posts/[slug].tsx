@@ -43,7 +43,6 @@ export async function getServerSideProps({ req, params }) {
 
   const client = createPrismicClient(req);
   const response = await client.getByUID('post', String(slug), {});
-console.log('asHTML', asHTML(response.data.content));
 
   const post = {
     slug,
