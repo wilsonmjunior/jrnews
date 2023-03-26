@@ -1,5 +1,6 @@
 declare namespace NodeJS {
   interface ProcessEnv {
+    PRISMIC_API_ENDPOINT: string;
     STRIPE_API_KEY: string;
     FAUNADB_KEY: string;
     NEXT_PUBLIC_STRIPE_PUBLIC_KEY: string;
